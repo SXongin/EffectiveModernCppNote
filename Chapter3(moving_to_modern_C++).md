@@ -12,7 +12,7 @@
 - Prefer nullptr to 0 and NULL;
 - Avoid overloading on integral and pointer types.
 
-## item 9 Prefer alias declarations to typedefs.
+## item 9 Prefer alias declarations to typedefs
 
 - typedefs don't support templatization, but alias declarations do.
 - Alias templates avoid the "::type" suffix and, in templates, the "typename" prefix often required to refer to typedefs.
@@ -41,3 +41,27 @@
 - in Maximally generic code, prefer non-member versions of begin, end, rbegin, etc., over their member functions counterparts.
 
 ## item 14 Declare functions noexcept if they won't emit exceptions
+
+- noexcept is part of a function's interface, and that means that callers may depend on it.
+- noexcept functions are more optimizable than non-noexcept functions.
+- noexcept is particularly valuable for the move operations, swap, memory deallocation functions, and destructors.
+- Most functions are exception-neutral rather than noexcept.
+
+## item 15 use constexpr whenever possible
+
+- constexpr objects are const and are initialized with values known during compilation.
+- constexpr functions can produce compile-time result when called with arguments whose values are known during compilation.
+- constexpr objects and functions may be used in a wider range of contexts than non-constexpr objects and functions.
+- constexpr is part of an object's or function's interface.
+
+## item 16 Make const member functions thread safe
+
+- Make const member functions thread safe unless you're certain they'll never be used in a concurrent context.
+- Use of std::atomic variables may offer better performance than a mutex, but they're suited for manipulation of only a single variable or memory location.
+
+## item 17 Understand special member function generation
+
+- The special member functions are those compilers may generate on their own: default constructor, destructor, copy operations, and move operations.
+- Move operations are generated only for classes lacking explicitly declared move operations, copy operations, and a destructor.
+- The copy constructor is generated only for classes lacking an explicitly declared copy constructor, and it's deleted if a move operations is declared. The copy assignment operator is generated only for classes lacking an explicitly declared copy assignment operator, and it's deleted if a move operation is declared. Generation of the copy operations in classes with an explicitly declared destructor is deprecated.
+- Member function templates never suppress generation of special member functions.
