@@ -8,4 +8,4 @@
 ## item 6 Use the explicitly typed initializer idiom when auto deduces undesired types
 
 - "Invisible" proxy types can cause auto to deduce the "wrong" type for a initializing expression.
-- The explicitly typed initializer idiom forces auto to deduce the type you want it to have.
+- The explicitly typed initializer idiom forces auto to deduce the type you want it to have.(ps: usually use static_cast<>)

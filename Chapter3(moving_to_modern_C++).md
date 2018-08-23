@@ -38,7 +38,7 @@
 ## item 13 Prefer const_iterators to iterators
 
 - Prefer const_iterator to iterators
-- in Maximally generic code, prefer non-member versions of begin, end, rbegin, etc., over their member functions counterparts.
+- In maximally generic code, prefer non-member versions of begin, end, rbegin, etc., over their member functions counterparts.
 
 ## item 14 Declare functions noexcept if they won't emit exceptions
 
